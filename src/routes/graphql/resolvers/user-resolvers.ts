@@ -6,8 +6,7 @@ const userResolvers = {
     return await context.user.load(id);
   },
   users: async (_, context: Context) => {
-    const users = await context.db.user.findMany();
-    return users;
+    return await context.db.user.findMany();
   },
 };
 
