@@ -3,6 +3,7 @@ import { userType } from "./users.js";
 import { UUIDType } from "./uuid.js";
 import memberType, { MemberTypeId } from "./member-types.js";
 import postType from "./post.js";
+import { profileType } from "./profile.js";
 
 export const query = new GraphQLObjectType({
   name: 'Query',
@@ -33,6 +34,15 @@ export const query = new GraphQLObjectType({
     },
     memberTypes: {
       type: new GraphQLList(memberType),
+    },
+    profile: {
+      type: profileType,
+      args: {
+        id: { type: new GraphQLNonNull(UUIDType) },
+      }
+    },
+    profiles: {
+      type: new GraphQLList(profileType),
     },
   },
 });
