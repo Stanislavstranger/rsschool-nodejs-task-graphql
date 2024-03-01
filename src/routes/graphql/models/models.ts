@@ -26,3 +26,10 @@ export interface PostDTO {
   content: string;
   authorId: string;
 }
+
+export interface ProfileDTO {
+  userId: string;
+  memberTypeId: string;
+  isMale: boolean;
+  yearOfBirth: number;
+}

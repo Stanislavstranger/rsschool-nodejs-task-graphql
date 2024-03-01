@@ -8,6 +8,7 @@ export const postDTO = new GraphQLInputObjectType({
     authorId: { type: new GraphQLNonNull(GraphQLString) },
   }),
 });
+
 export const postChangeDTO = new GraphQLInputObjectType({
   name: 'ChangePost',
   fields: () => ({
