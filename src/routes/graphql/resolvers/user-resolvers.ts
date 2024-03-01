@@ -1,5 +1,5 @@
 import { UUID } from "crypto";
-import { Context } from "../models/models.js";
+import { Context, UserDTO } from "../models/models.js";
 
 const userResolvers = {
   user: async ({ id }: { id: UUID }, context: Context) => {
@@ -8,6 +8,24 @@ const userResolvers = {
   users: async (_, context: Context) => {
     return await context.db.user.findMany();
   },
+  createUser: async ({ dto }: { dto: UserDTO }, context: Context) => {
+    return await context.db.user.create({ data: dto, });
+  },
+  changeUser: async ({ id, dto }: { id: UUID; dto: Partial<UserDTO> }, context: Context) => {
+    return await context.db.user.update({
+      where: { id },
+      data: dto,
+    });
+  },
+  deleteUser: async ({ id }: { id: UUID }, context: Context) => {
+    await context.db.user.delete({
+      where: {
+        id,
+      },
+    });
+    return '';
+  },
+
 };
 
 export default userResolvers;

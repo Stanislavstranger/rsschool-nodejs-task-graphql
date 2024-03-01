@@ -15,3 +15,8 @@ export interface UserData extends User {
   userSubscribedTo?: SubscribersOnAuthors[];
   subscribedToUser?: SubscribersOnAuthors[];
 }
+
+export interface UserDTO {
+  name: string;
+  balance: number;
+}
