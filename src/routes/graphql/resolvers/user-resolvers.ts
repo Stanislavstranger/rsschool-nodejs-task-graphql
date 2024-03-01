@@ -12,10 +12,7 @@ const userResolvers = {
     return await context.db.user.create({ data: dto, });
   },
   changeUser: async ({ id, dto }: { id: UUID; dto: Partial<UserDTO> }, context: Context) => {
-    return await context.db.user.update({
-      where: { id },
-      data: dto,
-    });
+    return await context.db.user.update({ where: { id }, data: dto, });
   },
   deleteUser: async ({ id }: { id: UUID }, context: Context) => {
     await context.db.user.delete({

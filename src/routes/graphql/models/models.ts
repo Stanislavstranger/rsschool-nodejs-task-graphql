@@ -20,3 +20,9 @@ export interface UserDTO {
   name: string;
   balance: number;
 }
+
+export interface PostDTO {
+  title: string;
+  content: string;
+  authorId: string;
+}
