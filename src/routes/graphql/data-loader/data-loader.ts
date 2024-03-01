@@ -3,17 +3,47 @@ import DataLoader from 'dataloader';
 
 const getDataFromBase = (prisma: PrismaClient) => {
 
-  const dataById = async (ids: readonly string[]) => {
+  const usersById = async (ids: readonly string[]) => {
     const listIds = [...ids];
-    const users = await prisma.user.findMany({
+    return await prisma.user.findMany({
       where: {
         id: { in: listIds },
       },
     });
-    return users;
   };
+
+  const postsById = async (ids: readonly string[]) => {
+    const listIds = [...ids];
+    return await prisma.post.findMany({
+      where: {
+        authorId: { in: listIds },
+      },
+    });
+  };
+
+  const membersTypeById = async (ids: readonly string[]) => {
+    const listIds = [...ids];
+    return await prisma.memberType.findMany({
+      where: {
+        id: { in: listIds }
+      }
+    });
+  };
+
+  const profilesById = async (ids: readonly string[]) => {
+    const listIds = [...ids];
+    return await prisma.profile.findMany({
+      where: {
+        userId: { in: listIds },
+      },
+    });
+  };
+
   return {
-    user: new DataLoader(dataById),
+    user: new DataLoader(usersById),
+    post: new DataLoader(postsById),
+    memberType: new DataLoader(membersTypeById),
+    profile: new DataLoader(profilesById),
   };
 };
 
