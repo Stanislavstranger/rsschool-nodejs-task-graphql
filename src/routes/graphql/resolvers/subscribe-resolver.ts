@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { UUID } from "crypto";
-import { Context, UserData } from "../models/models.js";
 
 const prisma = new PrismaClient();
 
@@ -30,13 +29,6 @@ const subscribeResolver = {
     });
     return ''
   },
-  userSubscribedTo: async (userData: UserData, _, context: Context) => {
-    return context.user.loadMany(userData.userSubscribedTo?.map((s) => s.authorId) || []);
-  },
-  subscribedToUser: async (userData: UserData, _, context: Context) => {
-    return context.user.loadMany(userData.subscribedToUser?.map((s) => s.subscriberId) || []);
-  },
-
 };
 
 export default subscribeResolver;

@@ -13,19 +13,19 @@ const postResolvers = {
     return await context.db.post.findMany();
   },
 
-  createPost: async ({ dto }: { dto: PostDTO }, context: Context) => {
-    return await context.db.post.create({ data: dto });
+  createPost: async ({ dto }: { dto: PostDTO }) => {
+    return await prisma.post.create({ data: dto });
   },
 
-  changePost: async ({ id, dto }: { id: UUID; dto: Partial<PostDTO> }, context: Context) => {
-    return await context.db.post.update({
+  changePost: async ({ id, dto }: { id: UUID; dto: Partial<PostDTO> }) => {
+    return await prisma.post.update({
       where: { id },
       data: dto,
     });
   },
 
-  deletePost: async ({ id }: { id: UUID }, context: Context) => {
-    await context.db.post.delete({ where: { id } });
+  deletePost: async ({ id }: { id: UUID }) => {
+    await prisma.post.delete({ where: { id } });
     return '';
   },
 };
