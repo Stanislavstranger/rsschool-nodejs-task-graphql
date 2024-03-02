@@ -4,6 +4,8 @@ import { userType } from "./users.js";
 import { UUIDType } from "./uuid.js";
 import postType from "./post.js";
 import { postChangeDTO, postDTO } from "./post.dto.js";
+import { profileType } from "./profile.js";
+import { profileChangeDTO, profileDTO } from "./profile.dto.js";
 
 export const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -42,5 +44,21 @@ export const mutation = new GraphQLObjectType({
       },
     },
 
+    createProfile: { type: profileType, args: { dto: { type: profileDTO } } },
+
+    changeProfile: {
+      type: profileType,
+      args: {
+        id: { type: UUIDType },
+        dto: { type: profileChangeDTO },
+      },
+    },
+
+    deleteProfile: {
+      type: GraphQLString,
+      args: {
+        id: { type: UUIDType },
+      },
+    },
   }),
 });
