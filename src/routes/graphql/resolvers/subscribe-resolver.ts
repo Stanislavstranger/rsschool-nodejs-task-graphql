@@ -18,7 +18,7 @@ const subscribeResolver = {
       },
     });
   },
-  unsubscribeFrom: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
+  userSubscribedTo: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
     await prisma.subscribersOnAuthors.delete({
       where: {
         subscriberId_authorId: {
