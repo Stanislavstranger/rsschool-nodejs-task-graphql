@@ -3,10 +3,11 @@ import { userType } from "./users.js";
 import { UUIDType } from "./uuid.js";
 
 const subscribeType: GraphQLObjectType = new GraphQLObjectType({
-  name: 'Subscribe',
+  name: 'Subscriber',
   fields: () => ({
-    subscribe: { type: new GraphQLNonNull(userType) },
-    subscribeId: { type: new GraphQLNonNull(UUIDType) },
+    subscriber: { type: new GraphQLNonNull(userType) },
+    subscriberId: { type: new GraphQLNonNull(UUIDType) },
+    author: { type: new GraphQLNonNull(userType) },
     authorId: { type: new GraphQLNonNull(UUIDType) },
   }),
 });

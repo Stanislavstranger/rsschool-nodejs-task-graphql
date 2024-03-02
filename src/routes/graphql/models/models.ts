@@ -5,10 +5,10 @@ export interface Context {
   db: PrismaClient,
   user: DataLoader<string, User>;
   posts: DataLoader<string, Post[]>;
-  memberType: DataLoader<string, MemberType[]>;
-  profile: DataLoader<string, Profile[]>;
-  subscribeTo: DataLoader<string, User[]>;
-  unsubscribeFrom: DataLoader<string, User[]>;
+  memberTypes: DataLoader<string, MemberType[]>;
+  profiles: DataLoader<string, Profile[]>;
+  subscribedToUser: DataLoader<string, User[]>;
+  userSubscribedTo: DataLoader<string, User[]>;
 }
 
 export interface UserData extends User {

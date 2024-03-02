@@ -8,6 +8,8 @@ import {
 import { UUIDType } from './uuid.js';
 import { userType } from './users.js';
 import memberType from './member-types.js';
+import { Profile } from '@prisma/client';
+import { Context } from '../models/models.js';
 
 export const profileType: GraphQLObjectType = new GraphQLObjectType({
   name: 'Profile',
@@ -15,9 +17,19 @@ export const profileType: GraphQLObjectType = new GraphQLObjectType({
     id: { type: new GraphQLNonNull(UUIDType) },
     isMale: { type: GraphQLBoolean },
     yearOfBirth: { type: GraphQLFloat },
-    user: { type: userType },
+    user: {
+      type: userType,
+      async resolve(profile: Profile, context: Context) {
+        return await context.user.load(profile.id);
+      },
+    },
     userId: { type: new GraphQLNonNull(UUIDType) },
-    memberType: { type: memberType },
+    memberType: {
+      type: memberType,
+      async resolve(profile: Profile, context: Context) {
+        return await context.memberTypes.load(profile.memberTypeId);
+      },
+    },
     memberTypeId: { type: GraphQLString },
   }),
 });

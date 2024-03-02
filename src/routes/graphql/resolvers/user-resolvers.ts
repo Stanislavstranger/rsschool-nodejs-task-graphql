@@ -2,10 +2,13 @@ import { UUID } from "crypto";
 import { Context, UserDTO } from "../models/models.js";
 import { GraphQLResolveInfo } from "graphql";
 import { parseResolveInfo } from "graphql-parse-resolve-info";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const userResolvers = {
-  user: async ({ id }: { id: UUID }, context: Context) => {
-    return await context.user.load(id);
+  user: async ({ id }: { id: UUID }) => {
+    return await prisma.user.findFirst({ where: { id } });
   },
 
   users: async (_, context: Context, info: GraphQLResolveInfo) => {
