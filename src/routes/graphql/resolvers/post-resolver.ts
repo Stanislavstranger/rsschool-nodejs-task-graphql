@@ -1,9 +1,12 @@
 import { UUID } from 'crypto';
 import { Context, PostDTO } from '../models/models.js';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 const postResolvers = {
-  post: async ({ id }: { id: UUID }, context: Context) => {
-    return await context.posts.load(id);
+  post: async ({ id }: { id: UUID }) => {
+    return await prisma.post.findFirst({ where: { id } });
   },
 
   posts: async (_, context: Context) => {

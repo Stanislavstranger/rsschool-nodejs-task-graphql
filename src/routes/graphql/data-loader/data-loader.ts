@@ -81,9 +81,9 @@ const getDataFromBase = (prisma: PrismaClient) => {
 
   return {
     user: new DataLoader(usersById),
-    post: new DataLoader(postsById),
-    memberType: new DataLoader(membersTypeById),
-    profile: new DataLoader(profilesById),
+    posts: new DataLoader(postsById),
+    memberTypes: new DataLoader(membersTypeById),
+    profiles: new DataLoader(profilesById),
     subscribedTo: new DataLoader(subscribedTo),
     userSubscribedTo: new DataLoader(userSubscribedTo),
   };
