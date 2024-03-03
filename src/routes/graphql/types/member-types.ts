@@ -1,15 +1,15 @@
 import { GraphQLEnumType, GraphQLFloat, GraphQLList, GraphQLNonNull, GraphQLObjectType } from "graphql";
-import { MemberTypeId as MemberId } from "../../member-types/schemas.js";
+import { MemberTypeId } from "../../member-types/schemas.js";
 import { profileType } from "./profile.js";
 
-export const MemberTypeId: GraphQLEnumType = new GraphQLEnumType({
+export const MemberId: GraphQLEnumType = new GraphQLEnumType({
   name: 'MemberTypeId',
   values: {
-    [MemberId.BASIC]: {
-      value: MemberId.BASIC,
+    [MemberTypeId.BASIC]: {
+      value: "basic",
     },
-    [MemberId.BUSINESS]: {
-      value: MemberId.BUSINESS,
+    [MemberTypeId.BUSINESS]: {
+      value: "business",
     },
   },
 });
@@ -17,7 +17,7 @@ export const MemberTypeId: GraphQLEnumType = new GraphQLEnumType({
 const memberType: GraphQLObjectType = new GraphQLObjectType({
   name: 'MemberType',
   fields: () => ({
-    id: { type: new GraphQLNonNull(MemberTypeId) },
+    id: { type: new GraphQLNonNull(MemberId) },
     discount: { type: GraphQLFloat },
     postsLimitPerMonth: { type: GraphQLFloat },
     profiles: { type: new GraphQLList(profileType) },

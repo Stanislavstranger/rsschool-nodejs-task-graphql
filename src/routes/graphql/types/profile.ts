@@ -19,15 +19,15 @@ export const profileType: GraphQLObjectType = new GraphQLObjectType({
     yearOfBirth: { type: GraphQLFloat },
     user: {
       type: userType,
-      async resolve(profile: Profile, context: Context) {
+      async resolve(profile: Profile, _, context: Context) {
         return await context.user.load(profile.id);
       },
     },
     userId: { type: new GraphQLNonNull(UUIDType) },
     memberType: {
       type: memberType,
-      async resolve(profile: Profile, context: Context) {
-        return await context.memberTypes.load(profile.memberTypeId);
+      async resolve(profile: Profile, _, context: Context) {
+        return await context.memberType.load(profile.memberTypeId);
       },
     },
     memberTypeId: { type: GraphQLString },

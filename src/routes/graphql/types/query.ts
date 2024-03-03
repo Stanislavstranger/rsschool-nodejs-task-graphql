@@ -1,7 +1,7 @@
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType } from "graphql"
 import { userType } from "./users.js";
 import { UUIDType } from "./uuid.js";
-import memberType, { MemberTypeId } from "./member-types.js";
+import memberType, { MemberId } from "./member-types.js";
 import postType from "./post.js";
 import { profileType } from "./profile.js";
 
@@ -29,7 +29,7 @@ export const query = new GraphQLObjectType({
     memberType: {
       type: memberType,
       args: {
-        id: { type: new GraphQLNonNull(MemberTypeId) },
+        id: { type: new GraphQLNonNull(MemberId) },
       }
     },
     memberTypes: {
