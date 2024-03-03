@@ -60,5 +60,21 @@ export const mutation = new GraphQLObjectType({
         id: { type: UUIDType },
       },
     },
+
+    subscribedToUser: {
+      type: userType,
+      args: {
+        userId: { type: UUIDType },
+        authorId: { type: UUIDType },
+      },
+    },
+
+    userSubscribedTo: {
+      type: GraphQLString,
+      args: {
+        userId: { type: UUIDType },
+        authorId: { type: UUIDType },
+      },
+    },
   }),
 });

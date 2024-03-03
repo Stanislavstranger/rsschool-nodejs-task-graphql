@@ -1,4 +1,4 @@
-import { GraphQLList, GraphQLNonNull, GraphQLObjectType } from "graphql"
+import { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql"
 import { userType } from "./users.js";
 import { UUIDType } from "./uuid.js";
 import memberType, { MemberId } from "./member-types.js";
@@ -7,7 +7,7 @@ import { profileType } from "./profile.js";
 
 export const query = new GraphQLObjectType({
   name: 'Query',
-  fields: {
+  fields: () => ({
     user: {
       type: userType,
       args: {
@@ -44,5 +44,5 @@ export const query = new GraphQLObjectType({
     profiles: {
       type: new GraphQLList(profileType),
     },
-  },
+  }),
 });

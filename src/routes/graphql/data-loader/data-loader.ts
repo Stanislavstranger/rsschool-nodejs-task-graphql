@@ -47,7 +47,7 @@ const getDataFromBase = (prisma: PrismaClient) => {
     return ids.map((id) => profiles.find((profile) => profile.userId === id));
   };
 
-  const subscribedTo = async (ids: readonly string[]) => {
+  const subscribedToUser = async (ids: readonly string[]) => {
     const listIds = [...ids];
     const subscribers = await prisma.subscribersOnAuthors.findMany({
       where: {
@@ -84,7 +84,7 @@ const getDataFromBase = (prisma: PrismaClient) => {
     posts: new DataLoader(postsById),
     memberType: new DataLoader(membersTypeById),
     profiles: new DataLoader(profilesById),
-    subscribedTo: new DataLoader(subscribedTo),
+    subscribedToUser: new DataLoader(subscribedToUser),
     userSubscribedTo: new DataLoader(userSubscribedTo),
   };
 };

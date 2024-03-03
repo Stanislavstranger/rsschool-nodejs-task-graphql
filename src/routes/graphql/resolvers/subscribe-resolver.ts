@@ -4,7 +4,7 @@ import { UUID } from "crypto";
 const prisma = new PrismaClient();
 
 const subscribeResolver = {
-  subscribeTo: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
+  subscribedToUser: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
     return await prisma.user.update({
       where: {
         id: userId,
