@@ -4,7 +4,7 @@ import { UUID } from "crypto";
 const prisma = new PrismaClient();
 
 const subscribeResolver = {
-  subscribedToUser: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
+  subscribeTo: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
     return await prisma.user.update({
       where: {
         id: userId,
@@ -18,7 +18,7 @@ const subscribeResolver = {
       },
     });
   },
-  userSubscribedTo: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
+  unsubscribeFrom: async ({ userId, authorId }: { userId: UUID; authorId: UUID }) => {
     await prisma.subscribersOnAuthors.delete({
       where: {
         subscriberId_authorId: {

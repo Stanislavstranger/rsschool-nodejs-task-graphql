@@ -61,7 +61,7 @@ export const mutation = new GraphQLObjectType({
       },
     },
 
-    subscribedToUser: {
+    subscribeTo: {
       type: userType,
       args: {
         userId: { type: UUIDType },
@@ -69,7 +69,7 @@ export const mutation = new GraphQLObjectType({
       },
     },
 
-    userSubscribedTo: {
+    unsubscribeFrom: {
       type: GraphQLString,
       args: {
         userId: { type: UUIDType },
