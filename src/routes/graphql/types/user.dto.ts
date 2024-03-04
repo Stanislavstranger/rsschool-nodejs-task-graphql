@@ -1,15 +1,15 @@
 import { GraphQLFloat, GraphQLInputObjectType, GraphQLNonNull, GraphQLString } from 'graphql';
 
-export const userDTO = new GraphQLInputObjectType({
-  name: 'CreateUser',
+export const userDto = new GraphQLInputObjectType({
+  name: 'CreateUserInput',
   fields: () => ({
     name: { type: new GraphQLNonNull(GraphQLString) },
     balance: { type: new GraphQLNonNull(GraphQLFloat) },
   }),
 });
 
-export const userChangeDTO = new GraphQLInputObjectType({
-  name: 'ChangeUser',
+export const userChangeDto = new GraphQLInputObjectType({
+  name: 'ChangeUserInput',
   fields: () => ({
     name: { type: GraphQLString },
     balance: { type: GraphQLFloat },

@@ -16,18 +16,18 @@ export interface UserData extends User {
   subscribedToUser?: SubscribersOnAuthors[];
 }
 
-export interface UserDTO {
+export interface UserDto {
   name: string;
   balance: number;
 }
 
-export interface PostDTO {
+export interface PostDto {
   title: string;
   content: string;
   authorId: string;
 }
 
-export interface ProfileDTO {
+export interface ProfileDto {
   userId: string;
   memberTypeId: string;
   isMale: boolean;

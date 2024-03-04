@@ -1,22 +1,22 @@
 import { GraphQLObjectType, GraphQLString } from "graphql";
-import { userChangeDTO, userDTO } from "./user.dto.js";
+import { userChangeDto, userDto } from "./user.dto.js";
 import { userType } from "./users.js";
 import { UUIDType } from "./uuid.js";
 import postType from "./post.js";
-import { postChangeDTO, postDTO } from "./post.dto.js";
+import { postChangeDto, postDto } from "./post.dto.js";
 import { profileType } from "./profile.js";
-import { profileChangeDTO, profileDTO } from "./profile.dto.js";
+import { profileChangeDto, profileDto } from "./profile.dto.js";
 
 export const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: () => ({
-    createUser: { type: userType, args: { dto: { type: userDTO } } },
+    createUser: { type: userType, args: { dto: { type: userDto } } },
 
     changeUser: {
       type: userType,
       args: {
         id: { type: UUIDType },
-        dto: { type: userChangeDTO },
+        dto: { type: userChangeDto },
       },
     },
 
@@ -27,13 +27,13 @@ export const mutation = new GraphQLObjectType({
       },
     },
 
-    createPost: { type: postType, args: { dto: { type: postDTO } } },
+    createPost: { type: postType, args: { dto: { type: postDto } } },
 
     changePost: {
       type: postType,
       args: {
         id: { type: UUIDType },
-        dto: { type: postChangeDTO },
+        dto: { type: postChangeDto },
       },
     },
 
@@ -44,13 +44,13 @@ export const mutation = new GraphQLObjectType({
       },
     },
 
-    createProfile: { type: profileType, args: { dto: { type: profileDTO } } },
+    createProfile: { type: profileType, args: { dto: { type: profileDto } } },
 
     changeProfile: {
       type: profileType,
       args: {
         id: { type: UUIDType },
-        dto: { type: profileChangeDTO },
+        dto: { type: profileChangeDto },
       },
     },
 

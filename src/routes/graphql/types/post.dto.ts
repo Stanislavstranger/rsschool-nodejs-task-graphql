@@ -1,7 +1,7 @@
 import { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } from 'graphql';
 
-export const postDTO = new GraphQLInputObjectType({
-  name: 'CreatePost',
+export const postDto = new GraphQLInputObjectType({
+  name: 'CreatePostInput',
   fields: () => ({
     title: { type: new GraphQLNonNull(GraphQLString) },
     content: { type: new GraphQLNonNull(GraphQLString) },
@@ -9,8 +9,8 @@ export const postDTO = new GraphQLInputObjectType({
   }),
 });
 
-export const postChangeDTO = new GraphQLInputObjectType({
-  name: 'ChangePost',
+export const postChangeDto = new GraphQLInputObjectType({
+  name: 'ChangePostInput',
   fields: () => ({
     title: { type: GraphQLString },
     content: { type: GraphQLString },

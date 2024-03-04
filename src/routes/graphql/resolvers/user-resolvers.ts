@@ -1,5 +1,5 @@
 import { UUID } from "crypto";
-import { Context, UserDTO } from "../models/models.js";
+import { Context, UserDto } from "../models/models.js";
 import { GraphQLResolveInfo } from "graphql";
 import { parseResolveInfo } from "graphql-parse-resolve-info";
 
@@ -20,11 +20,11 @@ const userResolvers = {
     return users;
   },
 
-  createUser: async ({ dto }: { dto: UserDTO }, context: Context) => {
+  createUser: async ({ dto }: { dto: UserDto }, context: Context) => {
     return await context.db.user.create({ data: dto, });
   },
 
-  changeUser: async ({ id, dto }: { id: UUID; dto: Partial<UserDTO> }, context: Context) => {
+  changeUser: async ({ id, dto }: { id: UUID; dto: Partial<UserDto> }, context: Context) => {
     return await context.db.user.update({ where: { id }, data: dto, });
   },
 

@@ -1,8 +1,8 @@
 import { GraphQLBoolean, GraphQLInputObjectType, GraphQLInt, GraphQLNonNull, GraphQLString } from 'graphql';
 import { MemberId } from './member-types.js';
 
-export const profileDTO = new GraphQLInputObjectType({
-  name: 'CreateProfile',
+export const profileDto = new GraphQLInputObjectType({
+  name: 'CreateProfileInput',
   fields: () => ({
     userId: { type: new GraphQLNonNull(GraphQLString) },
     memberTypeId: { type: new GraphQLNonNull(MemberId) },
@@ -11,8 +11,8 @@ export const profileDTO = new GraphQLInputObjectType({
   }),
 });
 
-export const profileChangeDTO = new GraphQLInputObjectType({
-  name: 'ChangeProfile',
+export const profileChangeDto = new GraphQLInputObjectType({
+  name: 'ChangeProfileInput',
   fields: () => ({
     memberTypeId: { type: MemberId },
     isMale: { type: GraphQLBoolean },

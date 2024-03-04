@@ -1,5 +1,5 @@
 import { UUID } from 'crypto';
-import { Context, ProfileDTO } from '../models/models.js';
+import { Context, ProfileDto } from '../models/models.js';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -13,11 +13,11 @@ const profileResolvers = {
     return await context.db.profile.findMany();
   },
 
-  createProfile: async ({ dto }: { dto: ProfileDTO }) => {
+  createProfile: async ({ dto }: { dto: ProfileDto }) => {
     return await prisma.profile.create({ data: dto });
   },
 
-  changeProfile: async ({ id, dto }: { id: UUID; dto: Partial<ProfileDTO> }) => {
+  changeProfile: async ({ id, dto }: { id: UUID; dto: Partial<ProfileDto> }) => {
     return await prisma.profile.update({
       where: { id },
       data: dto,
